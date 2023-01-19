@@ -1,11 +1,13 @@
 import pygame
 
-from colors import *
+from variables import *
+
 
 class Paddle(pygame.sprite.Sprite):
-
     def __init__(self, width, height, color) -> None:
         super().__init__()
+
+        self.width = width
 
         self.image = pygame.Surface([width, height])
         self.image.fill(color)
@@ -18,15 +20,11 @@ class Paddle(pygame.sprite.Sprite):
     def move_left(self):
         self.rect.x -= 10
 
-        # stop at the left side of the screen
-        # self.rect.x = max(self.rect.x, 0)
         if self.rect.x < -50:
-            self.rect.x = 750
+            self.rect.x = WINDOWWIDTH - 50
 
     def move_right(self):
         self.rect.x += 10
 
-        # stop at the right side of the screen
-        # self.rect.x = min(self.rect.x, 700)
-        if self.rect.x > 750:
+        if self.rect.x > WINDOWWIDTH - 50:
             self.rect.x = -50
