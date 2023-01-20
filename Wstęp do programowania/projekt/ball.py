@@ -15,11 +15,11 @@ class Ball(pygame.sprite.Sprite):
         pygame.draw.circle(self.image, color, (10, 10), 10)
 
         self.rect = self.image.get_rect()
-        self.rect.x = 400 - 10
-        self.rect.y = 300
+        self.rect.x = WINDOWWIDTH / 2 - 10
+        self.rect.y = WINDOWHEIGHT / 2 - 10
 
         self.move_vector = [0, 1]
-        self.speed = 5
+        self.speed = BALL_SPEED
 
         # to avoid ball getting stuck in the paddle
         self.just_hit = 0
@@ -40,3 +40,10 @@ class Ball(pygame.sprite.Sprite):
         if self.just_hit == 0:
             self.move_vector[1] *= -1
             self.just_hit = 10
+
+    def reset_position(self):
+        self.rect.x = WINDOWWIDTH / 2 - 10
+        self.rect.y = WINDOWHEIGHT / 2 - 10
+        self.move_vector = [0, 1]
+        self.speed = BALL_SPEED
+        self.just_hit = 0

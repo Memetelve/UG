@@ -11,6 +11,6 @@ class Block(pygame.sprite.Sprite):
         self.image.fill(color)
         self.image.set_colorkey(BLACK)
 
-        pygame.draw.rect(self.image, color, [0, 0, BLOCK_WIDTH, BLOCK_HEIGHT])
+        pygame.draw.rect(self.image, color, [0, 0, BLOCK_WIDTH, BLOCK_HEIGHT], 2, 15)
 
         self.rect = self.image.get_rect()

@@ -1,6 +1,4 @@
 import pygame
-import math
-
 from pygame.locals import *
 
 from paddle import Paddle
@@ -13,9 +11,26 @@ pygame.init()
 
 def write_score(score):
     # write score to file
-    with open("score.txt", "w") as f:
+    with open("score.txt", "a+") as f:
         f.write(str(score) + "\n")
 
+def calculate_paddle_deflection_angle(paddle_x, paddle_width, ball_x):
+    # more maths? do i like it? no (or maybe?)
+    deflect_angle = 100 - ((paddle_x + paddle_width) - ball_x - 10) - 50
+    deflect_angle = max(deflect_angle, -50) / 35
+    return round(deflect_angle, 2)
+
+def create_block(row, col, margin):
+    block = Block(ROW_COLORS[row])
+    block.rect.x = margin + (col * (BLOCK_WIDTH + BLOCK_GAP))
+    block.rect.y = (BLOCK_HEIGHT + BLOCK_GAP) * row + margin
+    return block
+
+def calculate_blocks_per_row():
+    return (WINDOWWIDTH + BLOCK_GAP) // (BLOCK_WIDTH + (BLOCK_GAP))
+
+def calculate_margin(blocks_per_row):
+    return (WINDOWWIDTH + BLOCK_GAP) % (blocks_per_row * (BLOCK_WIDTH + BLOCK_GAP)) / 2
 
 # game stats
 score = 0
@@ -44,21 +59,16 @@ all_sprites.add(paddle)
 all_sprites.add(ball)
 
 # MATHS (aaaaaaaa)
-# calculate brics per row
-blocks_per_row = (WINDOWWIDTH + BLOCK_GAP) // (BLOCK_WIDTH + (BLOCK_GAP))
-# calculate left (and right) margin
-margin = (WINDOWWIDTH + BLOCK_GAP) % (blocks_per_row * (BLOCK_WIDTH + BLOCK_GAP)) / 2
+blocks_per_row = calculate_blocks_per_row()
+margin = calculate_margin(blocks_per_row)
 
 # init blocks
 all_blocks = pygame.sprite.Group()
-
 for row in range(BLOCK_ROWS):
     for col in range(blocks_per_row):
-        brick = Block(ROW_COLORS[row])
-        brick.rect.x = margin + (col * (BLOCK_WIDTH + BLOCK_GAP))
-        brick.rect.y = (BLOCK_HEIGHT + BLOCK_GAP) * row + margin
-        all_sprites.add(brick)
-        all_blocks.add(brick)
+        block = create_block(row, col, margin)
+        all_sprites.add(block)
+        all_blocks.add(block)
 
 
 # main loop
@@ -73,34 +83,22 @@ while True:
 
     if ball.rect.y > WINDOWHEIGHT:
         lives -= 1
-        if lives == 0:
-            break
-        else:
-            ball.rect.x = 400 - 10
-            ball.rect.y = 300
-            ball.move_vector = [0, 1]
-            ball.speed = 5
-            ball.just_hit = 0
+        ball.reset_position()
 
-    # i don't even know
+    # prevent ball from being stuck in paddle/walls
     if ball.just_hit > 0:
         ball.just_hit -= 1
     # bounce off paddle if not just hit
     if pygame.sprite.collide_rect(ball, paddle) and ball.just_hit == 0:
         ball.reflect()
+        ball.move_vector[0] = calculate_paddle_deflection_angle(paddle.rect.x, paddle.width, ball.rect.x)
 
-        # more maths? do i like it? no (or maybe?)
-        deflect_angle = 100 - ((paddle.rect.x + paddle.width) - ball.rect.x - 10) - 50
-        deflect_angle = max(deflect_angle, -50) / 35
-        print(deflect_angle)
-        ball.move_vector[0] = round(deflect_angle, 3)
 
-    brick_collision_list = pygame.sprite.spritecollide(ball, all_blocks, False)
-    for brick in brick_collision_list:
+    block_collision_list = pygame.sprite.spritecollide(ball, all_blocks, False)
+    for block in block_collision_list:
         ball.reflect()
+        block.kill()
         score += 1
-        brick.kill()
-
         ball.speed += 0.1
 
         if len(all_blocks) == 0:
@@ -117,7 +115,7 @@ while True:
     all_sprites.update()
 
     # draw background
-    screen.fill(GREY)
+    screen.fill(BLACK)
 
     # draw stats
     font = pygame.font.Font(None, 34)
@@ -131,23 +129,23 @@ while True:
 
     pygame.display.update()
 
+    if lives == 0:
+        break
+
     # tick
     clock.tick(60)
 
 write_score(score)
 
-
 def checkForKeyPress():
     if len(pygame.event.get(QUIT)) > 0:
         return True
 
+font = pygame.font.Font(None, 74)
+text = font.render(f"Score: {score}", 1, WHITE)
+screen.blit(text, (300, 300))
+pygame.display.flip()
 
 while True:
-    font = pygame.font.Font(None, 74)
-    text = font.render(f"Score: {score}", 1, WHITE)
-    screen.blit(text, (200, 300))
-    pygame.display.flip()
-
-    while True:
-        if checkForKeyPress():
-            pygame.quit()
+    if checkForKeyPress():
+        pygame.quit()
