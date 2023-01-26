@@ -25,9 +25,6 @@ class Ball(pygame.sprite.Sprite):
         self.just_hit = 0
 
     def move(self):
-        # sign = 1 if self.move_vector[1] > 0 else -1
-        # self.move_vector[1] = sign * 2 - abs(self.move_vector[0])
-
         self.rect.x += self.move_vector[0] * self.speed
         self.rect.y += self.move_vector[1] * self.speed
 
@@ -45,5 +42,4 @@ class Ball(pygame.sprite.Sprite):
         self.rect.x = WINDOWWIDTH / 2 - 10
         self.rect.y = WINDOWHEIGHT / 2 - 10
         self.move_vector = [0, 1]
-        self.speed = BALL_SPEED
         self.just_hit = 0
