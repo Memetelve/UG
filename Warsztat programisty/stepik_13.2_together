@@ -1,0 +1,135 @@
+Zadanie 1
+
+#!/bin/bash
+
+read n
+
+if [[ $n =~ ^-?[0-9]*\.?[0-9]+$ ]]; then
+    echo "True"
+else
+    echo "False"
+fi
+
+
+Zadanie 2
+
+#!/bin/bash
+
+read -a arr
+sum=0
+for a in ${arr[*]}; do
+    sum=$(($sum + $a))
+done
+
+echo $sum
+
+
+Zadanie 3
+
+#!/bin/bash
+
+read -a arr
+
+for (( i=${#arr[*]}-1; i>=0; i-- )); do
+    echo ${arr[$i]}
+done
+
+
+Zadanie 4
+
+#!/bin/bash
+
+read word
+
+declare -a arr=(`echo $word | grep -o \.`)
+
+for (( i=0; i<${#arr[*]}; i++ )); do
+    echo ${arr[$i]}
+done
+
+
+Zadanie 5
+
+#!/bin/bash
+
+read word
+
+declare -a arr1=(`echo $word | grep -io [aeiouy]`) # tablica samogłosek
+echo "Liczba samogłosek: ${#arr1[*]:-0}"
+declare -a arr2=(`echo $word | grep -io [^aeiouy]`) # tablica spółgłosek
+echo "Liczba spółgłosek: ${#arr2[*]:-0}" # :-0 <- wartość domyślna 0
+
+
+Zadanie 6
+
+Rozwiązanie 1:
+#!/bin/bash
+
+read -a arr
+
+echo ${#arr[*]}
+
+Rozwiązanie 2:
+
+#!/bin/bash
+
+read text
+
+echo `echo $text | wc -w`
+
+
+Zadanie 7
+
+#!/bin/bash
+
+read -a arr
+max=$arr
+for (( i=0; i<${#arr[*]}; i++ )); do
+    if [[ $max -lt ${arr[$i]} ]]; then
+        max=${arr[$i]}
+    fi
+done
+
+echo $max
+
+
+Zadanie 8
+
+#!/bin/bash
+
+read -a arr
+
+for (( i=0; i<${#arr[*]}-1; i++ )); do
+    if [[ ${arr[i]} > ${arr[i+1]} ]];then
+        echo "${arr[i]} ${arr[i+1]}"
+    fi
+done
+
+
+Zadanie 9
+
+#!/bin/bash
+
+read -a arr
+
+for (( i=0; i<${#arr[*]}; i++ )); do
+    for (( j=0; j<${#arr[*]}-i-1; j++ )); do
+        if [[ ${arr[j]} > ${arr[j+1]} ]]; then
+            tmp=${arr[j]}
+            arr[j]=${arr[j+1]}
+            arr[j+1]=$tmp
+        fi
+    done
+done
+
+echo ${arr[*]}
+
+
+Zadanie 10
+
+#!/bin/bash
+
+hello_function() {
+    echo "Witaj w świecie powłoki BASH!!!"
+}
+

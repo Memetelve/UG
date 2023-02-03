@@ -1,0 +1,79 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\title{Tytuł pracy}
+\author{Imię i nazwisko}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Streszczenie pracy.
+\end{abstract}
+
+\section{Pierwszy rozdział}
+
+\subsection{Podsekcja 1}
+
+Tekst.
+
+\subsection{Podsekcja 2}
+
+Tekst.
+
+\section{Drugi rozdział}
+
+\subsection{Podsekcja 1}
+
+Tekst.
+
+\subsection{Podsekcja 2}
+
+Tekst.
+
+\subsection{Podsekcja 3}
+
+Tekst.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{rysunek1.pdf}
+\caption{Opis rysunku 1}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{rysunek2.pdf}
+\caption{Opis rysunku 2}
+\end{figure}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}ccc@{}}
+\toprule
+Kolumna 1 & Kolumna 2 & Kolumna 3 \ \midrule
+Wartość 1 & Wartość 2 & Wartość 3 \
+Wartość 4 & Wartość 5 & Wartość 6 \ \bottomrule
+\end{tabular}
+\caption{Opis tabeli}
+\end{table}
+
+W tekście odwołujemy się do rysunków (np. na rysunku 1 widzimy...), jak i do tabeli (tabela 1 przedstawia...).
+
+Bibliografia:
+
+\begin{thebibliography}{9}
+\bibitem{bib1} Autor 1, Tytuł 1, Rok 1.
+\bibitem{bib2} Autor 2, Tytuł 2, Rok 2.
+\end{thebibliography}
+
+W tekście odwołujemy się do bibliografii (np. według [1]...).
+
+\end{document}

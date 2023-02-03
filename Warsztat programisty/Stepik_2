@@ -1,0 +1,49 @@
+Znaki ucieczki:
+\n - newline
+\t - tabulacja
+\\ - backslash (\)
+
+
+echo -e = wyświetlanie outputu ze znakami specjalnymi (np. \n, \t) {escape characters}
+echo -n = pomija newline {no newline}
+
+$HOME - zmienna, która zawiera ściężkę do katalogu domowego
+$REPLY - zmienna zawierająca całą wpisaną linię (zawsze cała linia)
+Ogólnie zmienne to zawsze pojedyncze słowa, a $REPLY pobiera całą linię
+
+read {zmienna} - wczytanie zmiennej
+read -p "Komunikat" {zmienna} - wczytanie zmiennej z wyświetleniem komunikatu {-p prompt}
+
+[[ $zmienna =~ {regex} ]] - sprawdzanie regexa
+
+Sprawdzanie czy liczba jest całkowita:
+read -p "Podaj liczbę całkowitą" num
+
+if [[ $num =~ ^-?[1-9]+[0-9]*$ ]]; then
+    echo "$num jest całkowita"
+fi
+
+
+${#zmienna} - długość podanej zmiennej
+${arr[*]} - stworzenie zwykłej zmiennej zawierającej wszystkie elementy tej tablicy oddzielonej spacjami w jednej linii
+${arr[@]} - stworzenie kopii i odwoływanie się do kopii tablicy
+${arr[1]} - wyciągnięcie wartości o indeksie 1 z tablicy
+
+
+[[ -z [zmienna] ]] - Sprawdza czy podana zmienna jest pusta
+$* - zawiera wszystkie argumenty
+$# - ilość argumentów
+$1 - odwołanie do 1-szego argumentu
+${10} - odwołanie do 10-tego argumentu (musimy już dać klamerkę)
+$0 - odwołanie się do nazwy skryptu
+
+
+${text//$text_szukany/$text_nowy} - Szuka w $text wystąpienia $text_szukany i zamienia go na $text_nowy
+${text/$text_szukany/$text_nowy} - Szuka w $text wystąpienia $text_szukany i zamienia go na $text_nowy tylko dla pierwszego wystąpienia
+Np.:
+"ala ala"//"la"/"1" -> "a1 a1"
+"ala ala"/"la"/"1" -> "a1 ala"
+
+${arr[@]: -1} - wybranie ostatniego elementu
+${arr[@]:-1} - wartość domyślna 1
+"Od razu po dwukropku, to jest myślnik"

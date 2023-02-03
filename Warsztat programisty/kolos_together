@@ -1,0 +1,178 @@
+Zadanie 1
+
+#!/bin/bash
+
+read name
+
+echo "\$\$\$Wprowadzono: ${name}\$\$\$"
+
+
+Zadanie 2
+
+#!/bin/bash
+
+read -a arr
+
+sum=$(( ${arr[0]} + ${arr[1]} ))
+echo $(($sum**2))
+
+Lepsze rozwiązanie:
+
+#!/bin/bash
+
+read -a arr
+
+sum=0
+
+for i in ${arr[*]}; do
+    sum=$(($sum + $i))
+done
+
+echo $(($sum**2))
+
+
+Zadanie 3
+
+#!/bin/bash
+
+read n
+
+if [[ $n =~ \- ]]; then
+    echo "True"
+else
+    echo "False"
+fi
+
+
+Zadanie 4
+
+#!/bin/bash
+
+read text
+
+if [[ $text =~ ^\-?[1-9][0-9]*$ ]]; then
+    # całkowita
+    if [[ $text =~ \- ]]; then
+        echo "Wprowadzona liczba to całkowita ujemna"
+    else
+        echo "Wprowadzona liczba to całkowita dodatnia"
+    fi
+elif [[ $text =~ ^\-?[0-9]+\.[0-9]+$ ]]; then
+    # rzeczywista
+    if [[ $text =~ \- ]]; then
+        echo "Wprowadzona liczba to rzeczywista ujemna"
+    else
+        echo "Wprowadzona liczba to rzeczywista dodatnia"
+    fi
+else
+    echo "Wprowadzono nie liczbę"
+fi
+
+
+Zadanie 5
+
+#!/bin/bash
+
+read n
+
+for (( i=0; i<$n; i++ )); do
+    echo -n "#"
+    for (( j=0; j<$i; j++ )); do
+        echo -n " "
+    done
+    echo "#"
+done
+
+
+Zadanie 6
+
+#!/bin/bash
+
+is_isogram() {
+    letters=`echo $napis | fold -w 1 | sort`
+    letters_unique=`echo $napis | fold -w 1 | sort -u`
+    if [[ ${letters[*]} = ${letters_unique[*]} ]]; then
+        echo "True"
+    else
+        echo "False"
+    fi
+}
+
+
+Zadanie 7
+
+#!/bin/bash
+
+read -a student
+read subject
+
+data=`cat data.csv | grep ${student[0]}\;${student[1]}\;$subject | cut -d ';' -f 4`
+grades=($data)
+sum=0
+for grade in ${grades[*]}; do
+    sum=$(($sum + $grade))
+done
+
+avg=$(($sum / ${#grades[*]}))
+
+if [[ $(($sum % ${#grades[*]})) -eq 0 ]]; then
+    echo "Średnia ucznia: ${student[0]} ${student[1]} z przedmiotu: $subject wynosi: $avg"
+else
+    avg=$(($avg + 1))
+    echo "Średnia ucznia: ${student[0]} ${student[1]} z przedmiotu: $subject wynosi: $avg"
+fi
+
+
+Zadanie 8
+
+#!/bin/bash
+
+if [[ -z $* ]]; then
+    echo "Nie podano żadnych argumentów!!!"
+else
+    echo "$*"
+fi
+
+Inne rozwiązanie:
+
+#!/bin/bash
+
+if [[ $# -eq 0 ]]; then
+    echo "Nie podano żadnych argumentów!!!"
+else
+    echo "$*"
+fi
+
+
+Zadanie 9
+
+#!/bin/bash
+
+read text
+read w1
+read w2
+# szuka w1 w tekście i zamienia go na w2
+res=${text//$w1/$w2}
+echo $res
+
+
+Zadanie 10
+
+#!/bin/bash
+
+sum() {
+    local -a ar=($@)
+    if [[ ${#ar[*]} -eq 0 ]]; then
+        echo 0
+    else
+        local first=${ar[0]}
+        local rec=$(sum ${ar[*]:1})
+        echo $(( $rec + $first ))
+    fi
+}
+
+read -a arr
+
+res=$(sum ${arr[*]})
+echo $res
+
