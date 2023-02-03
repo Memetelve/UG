@@ -1,0 +1,274 @@
+$login-color: #065fd4;
+$header-button: #030303;
+$background-color: #f8f8f8;
+$category-hover: #f2f2f2;
+$movie-colors: #e1bbbb, #e1c6bb, #eeeccc, #d7e1bb, #bbe1ca, #bbdce1, #bcbbe1, #d9bbe1;
+
+body {
+    font-family: Roboto, Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.login {
+    border: 2px solid $login-color;
+    padding: 0.4rem;
+    display: flex;
+    gap: 0.8rem;
+
+    color: $login-color;
+    font-size: 1rem;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background-color: white;
+    margin-bottom: 1px solid lightgrey;
+
+    width: 100vw;
+    height: 3rem;
+
+    display: flex;
+    justify-content: space-between;
+
+    .start,
+    .center,
+    .end {
+        display: flex;
+        align-items: center;
+    }
+
+    .start {
+        button {
+            border: none;
+            margin: 0 1rem;
+        }
+        .logo {
+            display: flex;
+            gap: 0.3rem;
+            align-items: center;
+
+            i {
+                color: red;
+            }
+
+            .name {
+                font-weight: 600;
+            }
+
+            .pl {
+                position: relative;
+                top: -0.4rem;
+                font-size: 0.6rem;
+            }
+        }
+    }
+
+    .center {
+        input,
+        button {
+            height: 2rem;
+            border-radius: 0;
+            border: 1px lightgray solid;
+        }
+        input {
+            text-indent: 0.5rem;
+            border-right: none;
+            width: 500px;
+        }
+        button {
+            padding: 0 0.5rem;
+            background-color: rgb(223, 223, 223);
+            padding: 0 1rem;
+        }
+    }
+
+    .end {
+        gap: 1.5rem;
+        margin-right: 2rem;
+        button {
+            border: none;
+        }
+
+        .login {
+            border: 2px solid $login-color;
+            padding: 0.4rem;
+            display: flex;
+            gap: 0.8rem;
+
+            color: $login-color;
+            font-size: 1rem;
+        }
+    }
+}
+
+#body {
+    margin-top: 3.1rem;
+    display: flex;
+    justify-content: space-between;
+
+    #left-section {
+        width: 18%;
+        min-width: 250px;
+        max-width: 300px;
+
+        > div {
+            border-bottom: 1px solid lightgray;
+            padding: {
+                top: 0.6rem;
+                bottom: 0.6rem;
+            }
+
+
+            > * {
+                margin-left: 2rem;
+            }
+        }
+
+        .link-group {
+            ul {
+                list-style-type: none;
+
+                li {
+                    padding: 1rem 0rem;
+
+                    box-sizing: border-box;
+
+                    &:hover {
+                        background-color: $category-hover;
+                        cursor: pointer;
+                    }
+
+                    i {
+                        margin-right: 1rem;
+                    }
+                }
+            }
+
+            .header {
+                color: rgb(99, 98, 98);
+                text-transform: uppercase;
+                font-size: 0.85rem;
+                font-weight: 600;
+            }
+        }
+
+        .login-info {
+            p {
+                font-size: 0.7rem;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    #main-section {
+        min-width: 82%;
+
+        .buttons {
+            margin-bottom: 1rem;
+
+            button {
+                padding: 0.2rem 0.7rem;
+                border-radius: 3rem;
+                border: 1px solid lightgrey;
+
+                &.active {
+                    color: white;
+                    background-color: $header-button;
+                }
+            }
+        }
+
+        .main-movie-section {
+            background-color: rgb(231, 231, 231);
+            border-top: 1px solid lightgrey;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+            padding: 2rem;
+            gap: 1rem;
+
+            .header {
+                grid-column: 1/5;
+                font-size: 1.5rem;
+            }
+
+            .movie {
+                display: grid;
+
+                gap: .4rem;
+
+                grid-template-areas:
+                    "a a a a"
+                    "b c c c"
+                    "b c c c";
+
+                .movie-frame {
+                    grid-area: a;
+                    height: 200px;
+                }
+
+                .avatar,
+                .movie-info {
+                    margin-top: 0.4rem;
+                }
+
+                .avatar {
+                    width: 20%;
+                    grid-area: b;
+                    width: 3rem;
+                    height: 3rem;
+                    border-radius: 50%;
+                    background-color: gray;
+                }
+
+                .movie-info {
+                    // width: 70%;
+                    grid-area: c;
+
+                    .title {
+                        font-weight: 600;
+                    }
+
+                    .info {
+                        color: gray;
+                        font-size: 0.8rem;
+
+                        span {
+                            font-size: 0.9em;
+                        }
+
+                        .channel-name {
+                            margin: 0.3rem 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@for $i from 1 through 8 {
+    .main-movie-section:nth-child(2n) {
+        .movie:nth-child(#{$i}) {
+            .movie-frame {
+                background-color: nth($list: $movie-colors, $n: $i);
+            }
+        }
+    }
+}
+
+.main-movie-section:nth-child(2n+1) {
+    .movie {
+        .movie-frame {
+            background-color: darkgray;
+        }
+    }
+}
