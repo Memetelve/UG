@@ -1,272 +1,54 @@
-def file_managment():
-    file = open("3700.txt", "r+")
-    return [arg.replace("\n", "") for arg in file]
+def liczba(string: str, mode) -> int:
+    if mode == "D":
+        result = 0
+        for char in string:
+            result = result * 111 + ord(char)
+
+        return result
+
+    elif mode == "W":
+        return hash(string)
+
+    elif mode == "S":
+        return ord(string[0])
 
 
-def strongHash(word):
-    hashing = 1
-    for i in range(1, len(word)):
-        hashing = hashing * (111 * ord(word[i - 1]) + ord(word[i]))
-    return hashing
+def h(obj: int, size: int) -> int:
+    return obj % size
 
 
-def weakHash(word):
-    hashing = 0
-    for i in range(len(word)):
-        hashing = hashing + ord(word[i])
-    return hashing
-
-
-def emptyList(length):
+def emptyList(length: int) -> list:
     return [[] for _ in range(length)]
 
 
-listWithString = file_managment()
-print(
-    "\n-------------------------------------------------------- 17 --------------------------------------------------------------------\n"
-)
-
-# DEFAULT HASH
-print(":::::::: Default Hash :::::::::::\n")
-array = emptyList(34)
-for i in range(17):
-    array[(hash(listWithString[i]) % 34)].append(listWithString[i])
-maxi = 0
-empty = 0
-lenNotEmpty = 0
-countNotEmpty = 0
-for i in array:
-    if len(i) > maxi:
-        maxi = len(i)
-    if len(i) == 0:
-        empty = empty + 1
-    else:
-        lenNotEmpty = lenNotEmpty + len(i)
-        countNotEmpty = countNotEmpty + 1
-
-print("Maximum length of the longest element with 1024 elements is equal: ", maxi)
-print("Count of empty elements: ", empty)
-print(
-    "Average of length of not empty elements: ",
-    round(lenNotEmpty / countNotEmpty, 3),
-    end="\n\n",
-)
-
-# STRONG HASH
-print(":::::::: Self strong Hash :::::::::::\n")
-array = emptyList(34)
-for i in range(17):
-    array[(strongHash(listWithString[i]) % 34)].append(listWithString[i])
-maxi = 0
-empty = 0
-lenNotEmpty = 0
-countNotEmpty = 0
-for i in array:
-    if len(i) > maxi:
-        maxi = len(i)
-    if len(i) == 0:
-        empty = empty + 1
-    else:
-        lenNotEmpty = lenNotEmpty + len(i)
-        countNotEmpty = countNotEmpty + 1
-
-print("Maximum length of the longest element with 1024 elements is equal: ", maxi)
-print("Count of empty elements: ", empty)
-print(
-    "Average of length of not empty elements: ",
-    round(lenNotEmpty / countNotEmpty, 3),
-    end="\n\n",
-)
-
-# WEAK HASH
-print(":::::::: Self weak Hash :::::::::::\n")
-array = emptyList(34)
-for i in range(17):
-    array[(weakHash(listWithString[i]) % 34)].append(listWithString[i])
-maxi = 0
-empty = 0
-lenNotEmpty = 0
-countNotEmpty = 0
-for i in array:
-    if len(i) > maxi:
-        maxi = len(i)
-    if len(i) == 0:
-        empty = empty + 1
-    else:
-        lenNotEmpty = lenNotEmpty + len(i)
-        countNotEmpty = countNotEmpty + 1
-
-print("Maximum length of the longest element with 1024 elements is equal: ", maxi)
-print("Count of empty elements: ", empty)
-print(
-    "Average of length of not empty elements: ",
-    round(lenNotEmpty / countNotEmpty, 3),
-    end="\n\n",
-)
-
-print(
-    "\n-------------------------------------------------------- 1031 --------------------------------------------------------------------\n"
-)
-
-# DEFAULT HASH
-print(":::::::: Default Hash :::::::::::\n")
-array = emptyList(2062)
-for i in range(1031):
-    array[(hash(listWithString[i]) % 2062)].append(listWithString[i])
-maxi = 0
-empty = 0
-lenNotEmpty = 0
-countNotEmpty = 0
-for i in array:
-    if len(i) > maxi:
-        maxi = len(i)
-    if len(i) == 0:
-        empty = empty + 1
-    else:
-        lenNotEmpty = lenNotEmpty + len(i)
-        countNotEmpty = countNotEmpty + 1
-
-print("Maximum length of the longest element with 1024 elements is equal: ", maxi)
-print("Count of empty elements: ", empty)
-print(
-    "Average of length of not empty elements: ",
-    round(lenNotEmpty / countNotEmpty, 3),
-    end="\n\n",
-)
-
-# STRONG HASH
-print(":::::::: Self strong Hash :::::::::::\n")
-array = emptyList(2062)
-for i in range(1031):
-    array[(strongHash(listWithString[i]) % 2062)].append(listWithString[i])
-maxi = 0
-empty = 0
-lenNotEmpty = 0
-countNotEmpty = 0
-for i in array:
-    if len(i) > maxi:
-        maxi = len(i)
-    if len(i) == 0:
-        empty = empty + 1
-    else:
-        lenNotEmpty = lenNotEmpty + len(i)
-        countNotEmpty = countNotEmpty + 1
-
-print("Maximum length of the longest element with 1024 elements is equal: ", maxi)
-print("Count of empty elements: ", empty)
-print(
-    "Average of length of not empty elements: ",
-    round(lenNotEmpty / countNotEmpty, 3),
-    end="\n\n",
-)
-
-# WEAK HASH
-print(":::::::: Self weak Hash :::::::::::\n")
-array = emptyList(2062)
-for i in range(1031):
-    array[(weakHash(listWithString[i]) % 2062)].append(listWithString[i])
-maxi = 0
-empty = 0
-lenNotEmpty = 0
-countNotEmpty = 0
-for i in array:
-    if len(i) > maxi:
-        maxi = len(i)
-    if len(i) == 0:
-        empty = empty + 1
-    else:
-        lenNotEmpty = lenNotEmpty + len(i)
-        countNotEmpty = countNotEmpty + 1
-
-print("Maximum length of the longest element with 1024 elements is equal: ", maxi)
-print("Count of empty elements: ", empty)
-print(
-    "Average of length of not empty elements: ",
-    round(lenNotEmpty / countNotEmpty, 3),
-    end="\n\n",
-)
+with open("3700.txt", "r+") as file:
+    data = [line.replace("\n", "") for line in file]
 
 
-print(
-    "\n-------------------------------------------------------- 1024 --------------------------------------------------------------------\n"
-)
+for size in [17, 1031, 1024]:
+    for mode in ["W", "D", "S"]:
+        t = emptyList(size)
 
-# DEFAULT HASH
-print(":::::::: Default Hash :::::::::::\n")
-array = emptyList(2048)
-for i in range(1024):
-    array[(hash(listWithString[i]) % 2048)].append(listWithString[i])
-maxi = 0
-empty = 0
-lenNotEmpty = 0
-countNotEmpty = 0
-for i in array:
-    if len(i) > maxi:
-        maxi = len(i)
-    if len(i) == 0:
-        empty = empty + 1
-    else:
-        lenNotEmpty = lenNotEmpty + len(i)
-        countNotEmpty = countNotEmpty + 1
+        for index, word in enumerate(data):
+            t[h(liczba(word, mode), size)].append(word)
 
-print("Maximum length of the longest element with 1024 elements is equal: ", maxi)
-print("Count of empty elements: ", empty)
-print(
-    "Average of length of not empty elements: ",
-    round(lenNotEmpty / countNotEmpty, 3),
-    end="\n\n",
-)
+            if index == size * 2:
+                break
+
+        print(f"--- Mode: {mode}, Size: {size} ---")
+        print(f"Empty: {sum(not i for i in t)}")
+        print(f"Max length: {max(len(i) for i in t)}")
+
+        notEmpty = 0
+        sumLength = 0
+        for list in t:
+            if list:
+                notEmpty += 1
+                sumLength += len(list)
+
+        print(f"Average length: {sumLength / notEmpty}")
+        print("\n\n")
 
 
-# STRONG HASH
-print(":::::::: Strong Hash :::::::::::\n")
-array = emptyList(2048)
-for i in range(1024):
-    array[(strongHash(listWithString[i]) % 2048)].append(listWithString[i])
-maxi = 0
-empty = 0
-lenNotEmpty = 0
-countNotEmpty = 0
-for i in array:
-    if len(i) > maxi:
-        maxi = len(i)
-    if len(i) == 0:
-        empty = empty + 1
-    else:
-        lenNotEmpty = lenNotEmpty + len(i)
-        countNotEmpty = countNotEmpty + 1
-
-print("Maximum length of the longest element with 1024 elements is equal: ", maxi)
-print("Count of empty elements: ", empty)
-print(
-    "Average of length of not empty elements: ",
-    round(lenNotEmpty / countNotEmpty, 3),
-    end="\n\n",
-)
-
-
-# WEAK HASH
-print(":::::::: Weak Hash :::::::::::\n")
-array = emptyList(2048)
-for i in range(1024):
-    array[(weakHash(listWithString[i]) % 2048)].append(listWithString[i])
-maxi = 0
-empty = 0
-lenNotEmpty = 0
-countNotEmpty = 0
-for i in array:
-    if len(i) > maxi:
-        maxi = len(i)
-    if len(i) == 0:
-        empty = empty + 1
-    else:
-        lenNotEmpty = lenNotEmpty + len(i)
-        countNotEmpty = countNotEmpty + 1
-
-print("Maximum length of the longest element with 1024 elements is equal: ", maxi)
-print("Count of empty elements: ", empty)
-print(
-    "Average of length of not empty elements: ",
-    round(lenNotEmpty / countNotEmpty, 3),
-    end="\n\n",
-)
+# 1031 daje lepsze wyniki
+# wybrór funckji hashującej ma znaczenie
