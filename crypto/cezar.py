@@ -7,7 +7,7 @@ def cezar_encrypt():
         text = file.read().strip()
 
     with open("key.txt", "r") as file:
-        shift = int(file.read().strip())
+        shift = int(file.read().strip()).split(" ")[0]
 
     encrypted_text = ""
 
@@ -28,7 +28,7 @@ def cezar_decrypt():
         text = file.read().strip()
 
     with open("key.txt", "r+") as file:
-        shift = int(file.read().strip()) * -1
+        shift = int(file.read().strip()).split(" ")[0] * -1
 
     decrypted_text = ""
 
