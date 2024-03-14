@@ -84,6 +84,9 @@ def affine_encrypt():
     a = int(key[0])
     b = int(key[1])
 
+    if math.gcd(a, 26) != 1:
+        raise ValueError("Your key is invalid!")
+
     encrypted_text = ""
 
     for char in text:
@@ -109,7 +112,7 @@ def affine_decrypt():
     b = int(key[1])
 
     if math.gcd(a, 26) != 1:
-        raise ValueError("Your key is invalid! a and 26 are not coprime!")
+        raise ValueError("Your key is invalid!")
 
     decrypted_text = ""
 
@@ -144,9 +147,13 @@ def affine_recover_key():
                     decrypted_text += chr((a_inv * (ord(char) - 97 - b)) % 26 + 97)
                 else:
                     decrypted_text += chr((a_inv * (ord(char) - 65 - b)) % 26 + 65)
-            if decrypted_text == decrypted_text_real:
+
+                if len(decrypted_text) == len(decrypted_text_real):
+                    break
+
+            if decrypted_text == decrypted_text_real[: len(decrypted_text)]:
                 break
-        if decrypted_text == decrypted_text_real:
+        if decrypted_text == decrypted_text_real[: len(decrypted_text)]:
             break
 
     with open("key-found.txt", "w+") as file:
@@ -186,7 +193,6 @@ def main():
     cypher_options = ["a", "c"]
     operation_options = ["e", "d", "j", "k"]
 
-    # get cmd args
     args = sys.argv[1:]
 
     user_selected_cypher = ""
