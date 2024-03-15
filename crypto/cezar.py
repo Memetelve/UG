@@ -1,3 +1,6 @@
+# autor: Maciej Marszałkowski
+
+
 import sys
 import math
 
@@ -7,7 +10,7 @@ def cezar_encrypt():
         text = file.read().strip()
 
     with open("key.txt", "r") as file:
-        shift = int(file.read().strip()).split(" ")[0]
+        shift = int(file.read().strip().split(" ")[0])
 
     encrypted_text = ""
 
@@ -28,7 +31,7 @@ def cezar_decrypt():
         text = file.read().strip()
 
     with open("key.txt", "r+") as file:
-        shift = int(file.read().strip()).split(" ")[0] * -1
+        shift = int(file.read().strip().split(" ")[0]) * -1
 
     decrypted_text = ""
 
@@ -40,7 +43,7 @@ def cezar_decrypt():
         else:
             decrypted_text += chr((ord(char) + shift - 65) % 26 + 65)
 
-    with open("plain.txt", "w+") as file:
+    with open("decrypt.txt", "w+") as file:
         file.write(decrypted_text)
 
 
@@ -61,7 +64,7 @@ def cezar_decrypt_without_key():
     with open("crypto.txt", "r+") as file:
         encrypted_text = file.read().strip()
 
-    with open("plain.txt", "w+") as file:
+    with open("decrypt.txt", "w+") as file:
         for key in range(26):
             decrypted_text = ""
             for char in encrypted_text:
@@ -81,8 +84,8 @@ def affine_encrypt():
     with open("key.txt", "r") as file:
         key = file.read().strip().split(" ")
 
-    a = int(key[0])
-    b = int(key[1])
+    a = int(key[1])
+    b = int(key[0])
 
     if math.gcd(a, 26) != 1:
         raise ValueError("Your key is invalid!")
@@ -108,8 +111,8 @@ def affine_decrypt():
     with open("key.txt", "r+") as file:
         key = file.read().strip().split(" ")
 
-    a = int(key[0])
-    b = int(key[1])
+    a = int(key[1])
+    b = int(key[0])
 
     if math.gcd(a, 26) != 1:
         raise ValueError("Your key is invalid!")
@@ -125,6 +128,9 @@ def affine_decrypt():
             decrypted_text += chr((a_inv * (ord(char) - 97 - b)) % 26 + 97)
         else:
             decrypted_text += chr((a_inv * (ord(char) - 65 - b)) % 26 + 65)
+
+    with open("decrypt.txt", "w+") as file:
+        file.write(decrypted_text)
 
 
 def affine_recover_key():
@@ -157,14 +163,14 @@ def affine_recover_key():
             break
 
     with open("key-found.txt", "w+") as file:
-        file.write(f"{a} {b}")
+        file.write(f"{b} {a}")
 
 
 def affine_decrypt_without_key():
     with open("crypto.txt", "r+") as file:
         encrypted_text = file.read().strip()
 
-    with open("plain.txt", "w+") as file:
+    with open("decrypt.txt", "w+") as file:
         for a in range(1, 26, 2):
             for b in range(1, 26):
                 decrypted_text = ""
@@ -178,7 +184,7 @@ def affine_decrypt_without_key():
 
                 x = next((i for i in range(26) if (a * i) % 26 == 1), 0)
 
-                file.write(f"Key: {x} {b}\n{decrypted_text}\n\n")
+                file.write(f"Key: {b} {x}\n{decrypted_text}\n\n")
 
 
 def main():
