@@ -167,6 +167,7 @@ def affine_recover_key():
 
 
 def affine_decrypt_without_key():
+
     with open("crypto.txt", "r+") as file:
         encrypted_text = file.read().strip()
 
@@ -240,6 +241,9 @@ def main():
         selected_cypher = 0
 
     suitable_function = operations[user_selected_operation][selected_cypher]
+
+    print(f"Running function: {suitable_function.__name__}")
+
     suitable_function()
 
 
