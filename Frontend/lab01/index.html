@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <form action="/action_page.php">
+            <fieldset>
+                <legend>Dane osobowe</legend>
+                <label for="fname">Imie:</label><br />
+                <input type="text" id="fname" name="fname" /><br /><br />
+                <label for="lname">Nazwisko:</label><br />
+                <input type="text" id="lname" name="lname" /><br /><br />
+                <label for="email">Email:</label><br />
+                <input type="email" id="email" name="email" /><br /><br />
+            </fieldset>
+
+            <fieldset>
+                <legend>Adres dostawy</legend>
+                <label for="fnam">Adres:</label><br />
+                <input type="text" id="fnam" name="fname" /><br /><br />
+                <label for="lname">Kraj:</label><br />
+                <!-- options -->
+                <select name="country" id="country">
+                    <option value="pl">Polska</option>
+                    <option value="de">Niemcy</option>
+                    <option value="us">USA</option></select
+                ><br /><br />
+
+                <label for="email">Kod pocztowy:</label><br />
+                <input type="email" id="emai" name="email" /><br /><br />
+            </fieldset>
+
+            <fieldset>
+                <legend>Opcje zamowienia</legend>
+                <label for="fname">Metody płatnosci:</label><br />
+                <input type="radio" id="age1" name="age" value="30" />
+                <label for="age1">Pay Pal</label><br />
+                <input type="radio" id="age2" name="age" value="30" />
+                <label for="age1">Karta kredytowa</label><br /><br />
+
+                <label for="dodatki">Dodatki:</label><br />
+                <!-- checkbox -->
+                <input type="checkbox" id="one" />
+                <label for="one">Pakowanie</label><br />
+                <input type="checkbox" id="two" />
+                <label for="two">Wysylka</label><br />
+            </fieldset>
+
+            <fieldset>
+                <legend>Komentarze i uwagi</legend>
+                <label for="message">Twoje uwagi:</label><br />
+                <textarea name="message" rows="7" cols="50"></textarea>
+            </fieldset>
+
+            <input type="submit" value="Złóż zamowienie" />
+        </form>
+    </body>
+</html>

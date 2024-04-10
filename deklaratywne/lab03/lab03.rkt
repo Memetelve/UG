@@ -101,13 +101,15 @@
         )
 )
 
-(define (twoja x) 
+(define (twoja x)
     (
         + (* x x x) (* 3 x) 3
     )
 )
 
 (root twoja -2 5 0)
+
+
 
 
 
