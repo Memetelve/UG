@@ -77,36 +77,45 @@ def decrypt_without_key():
         data[i] = temp
 
     for i in range(len(data[0])):
+        # for i in range(test_index, test_index + 1):
+        second_place_one_count = 0
+        second_place_zero_count = 0
         for j in range(len(data)):
-            element = data[j][i]
-            if len(element) > 1 and element[1] == "1":
-                reset_key = element
+            if data[j][i][1] == "1":
+                second_place_one_count += 1
+            else:
+                second_place_zero_count += 1
 
-                for k in range(len(data)):
-                    zaszyfrowany_znak = data[k][i]
-                    odszyfrowany_znak = ""
+        if second_place_one_count > second_place_zero_count:
+            # the key was " "
+            for j in range(len(data)):
+                # xor all chars in this column with " "
+                new_char = int(data[j][i], 2) ^ 0b00100000
+                # Check if the result is 0, which means the original was a space
+                if new_char == 0:
+                    data[j][i] = " "
+                else:
+                    data[j][i] = chr(new_char)
+        else:
+            key = next(
+                (data[j][i] for j in range(len(data)) if data[j][i][1] == "1"), None
+            )
 
-                    for m in range(8):
-                        xor = int(zaszyfrowany_znak[m]) ^ int(reset_key[m])
-                        odszyfrowany_znak += str(xor)
+            if key is None:
+                for j in range(len(data)):
+                    data[j][i] = "_"
+                continue
 
-                    odszyfrowany_znak = str(
-                        int(zaszyfrowany_znak, 2) ^ int(reset_key, 2)
-                    )
-
-                    if int(odszyfrowany_znak, 2) == 0b00000000:
-                        data[k][i] = " "
-                    else:
-                        znak = chr(int(odszyfrowany_znak))
-                        data[k][i] = znak
+            for j in range(len(data)):
+                data[j][i] = chr(int(data[j][i], 2) ^ int(key, 2))
 
     full_decrypted = "".join("".join(line) + "\n" for line in data)
+    full_decrypted = full_decrypted.lower()
 
-    with open("decrypt_without_key.txt", "w") as f:
+    with open("decrypt_without_key.txt", "w", encoding="ascii") as f:
         f.write(full_decrypted)
 
 
 prepare_data()
 encrypt_data()
-
 decrypt_without_key()
