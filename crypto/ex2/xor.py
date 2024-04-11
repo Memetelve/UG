@@ -1,5 +1,7 @@
 # Author: Maciej Marszałkowski
 
+import sys
+
 
 def prepare_data():
     with open("orig.txt", "r") as f:
@@ -43,30 +45,6 @@ def encrypt_data():
         f.write(full_encrypted)
 
 
-def decrypt_data():
-    with open("crypto.txt", "r") as f:
-        data = f.readlines()
-
-    with open("key.txt", "r") as f:
-        key = f.read()
-
-    full_decrypted = ""
-
-    for line in data:
-        line = line.replace("\n", "")
-        key = key.replace("\n", "")
-
-        line_bins = [line[i : i + 8] for i in range(0, len(line), 8)]
-
-        decrypted_line = "".join(
-            chr(int(a, 2) ^ ord(b)) for a, b in zip(line_bins, key)
-        )
-        full_decrypted += decrypted_line + "\n"
-
-    with open("decrypt.txt", "w") as f:
-        f.write(full_decrypted)
-
-
 def decrypt_without_key():
     with open("crypto.txt", "r") as f:
         data = f.read().strip().split("\n")
@@ -77,7 +55,6 @@ def decrypt_without_key():
         data[i] = temp
 
     for i in range(len(data[0])):
-        # for i in range(test_index, test_index + 1):
         second_place_one_count = 0
         second_place_zero_count = 0
         for j in range(len(data)):
@@ -112,10 +89,42 @@ def decrypt_without_key():
     full_decrypted = "".join("".join(line) + "\n" for line in data)
     full_decrypted = full_decrypted.lower()
 
-    with open("decrypt_without_key.txt", "w", encoding="ascii") as f:
+    with open("decrypt.txt", "w", encoding="ascii") as f:
         f.write(full_decrypted)
 
+    fix()
 
-prepare_data()
-encrypt_data()
-decrypt_without_key()
+
+def fix():
+    with open("decrypt.txt", "r") as f:
+        data = f.readlines()
+
+    new_data = ""
+
+    for line in data:
+        for char in line:
+            if char not in "abcdefghijklmnopqrstuvwxyz \n_":
+                char = " "
+
+            new_data += char
+
+    with open("decrypt.txt", "w") as f:
+        f.write("".join(new_data))
+
+
+if __name__ == "__main__":
+    args = sys.argv[1:]
+
+    if len(args) == 0:
+        print("No arguments passed. Exiting...")
+        sys.exit(1)
+
+    if args[0] == "-p":
+        prepare_data()
+    elif args[0] == "-e":
+        encrypt_data()
+    elif args[0] == "-k":
+        decrypt_without_key()
+    else:
+        print("Invalid argument passed. Exiting...")
+        sys.exit(1)
