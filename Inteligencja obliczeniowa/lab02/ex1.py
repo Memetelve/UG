@@ -13,7 +13,7 @@ def fix_name(name: str) -> str:
     return max(
         possible_names,
         key=lambda x: SequenceMatcher(None, x, name).ratio(),
-    )[0]
+    )
 
 
 data = pd.read_csv("iris_with_errors.csv")
@@ -32,7 +32,7 @@ for row in data.columns:
 
     row_median = data[row].median(skipna=True)
     data[row].fillna(row_median, inplace=True)
-    data[row] = data[row].apply(lambda x: row_median if x < 0 or x > 15 else x)
+    data[row] = data[row].apply(lambda x: row_median if x <= 0 or x > 15 else x)
 
 
 # missing values
