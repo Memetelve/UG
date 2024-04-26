@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeClassifier, export_text, plot_tree
 from sklearn.metrics import confusion_matrix
 
-DEBUG = True
-USELESS_PRINTS = False
+DEBUG = False
+USELESS_PRINTS = True
 
 
 df = pd.read_csv("iris.csv")

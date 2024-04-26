@@ -2,10 +2,10 @@ import matplotlib.pyplot as plt
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from tensorflow.python.keras.models import Sequential
-from tensorflow.python.keras.layers import Dense
-
-# from tensorflow.python.keras.utils import plot_model
+from keras.api.models import Sequential
+from keras.api.layers import Dense
+from keras.api.utils import plot_model
+import tensorflow as tf
 
 
 # Load the iris dataset
@@ -21,7 +21,7 @@ scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
 # Encode the labels
-encoder = OneHotEncoder(sparse_output=True)
+encoder = OneHotEncoder(sparse_output=False)
 y_encoded = encoder.fit_transform(y.reshape(-1, 1))
 
 # Split the dataset into training and test sets
@@ -41,8 +41,6 @@ model = Sequential(
 # Compile the model
 model.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"])
 
-# do some conversion
-# y_train_dense = tf.sparse.to_dense(y_train)
 
 # Train the model
 history = model.fit(X_train, y_train, epochs=100, validation_split=0.2)
@@ -74,6 +72,6 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 # Save the model
-model.save("iris_model.h5")
+model.save("iris_model.keras")
 # Plot and save the model architecture
-# plot_model(model, to_file="model_plot.png", show_shapes=True, show_layer_names=True)
+plot_model(model, to_file="model_plot.png", show_shapes=True, show_layer_names=True)
