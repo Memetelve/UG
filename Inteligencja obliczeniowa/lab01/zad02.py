@@ -16,13 +16,12 @@ def calculate_distance(velocity, degree, height):
 def calculate_position(velocity, degree, height, time):
     time = time / 100
     degree = math.radians(degree)
-    x = velocity * time * math.cos(degree)
     y = velocity * time * math.sin(degree) - 0.5 * 9.81 * time**2 + height
 
     if y < 0:
-        y = 0
+        y = None
 
-    return x, y
+    return y
 
 
 def main():
@@ -51,7 +50,8 @@ def main():
 
     # Plot the trajectory
     x = [i for i in range(0, 340 * 100)]
-    y = [calculate_position(velocity, degree, height, i)[1] for i in x]
+    y = [calculate_position(velocity, degree, height, i) for i in x]
+
     plt.plot(x, y)
     plt.show()
 
