@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: backend
+    build: ./app/.
+    environment:
+      - APP_PORT=5000
+    networks:
+      - exam
+    volumes:
+      - ./logs:/app/logs
+  nginx:
+    build: ./nginx/.
+    ports:
+      - "80:80"
+    networks:
+      - exam
+
+networks:
+  exam:
+    driver: bridge
