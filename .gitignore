@@ -1,2 +1,5 @@
 
 Wstęp do programowania/projekt/__pycache__/
+
+*.class
+out/
