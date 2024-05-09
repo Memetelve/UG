@@ -9,18 +9,21 @@ let
     ps.scikit-learn
     ps.pandas
     ps.numpy
+    ps.opencv4
+    pkgs.gtk2
+    pkgs.pkg-config
   ]);
 in
 pkgs.mkShell {
   name = "tf";
-  packages = [
-    (pkgs.python3.withPackages (python-pkgs: [
-      (pkgs.callPackage ./python-packages.nix)
-    ]))
-  ];
-  # buildInputs = [
-  #   (pythonPackages)
+  # packages = [
+  #   (pkgs.python3.withPackages (python-pkgs: [
+  #     (pkgs.callPackage ./python-packages.nix)
+  #   ]))
   # ];
+  buildInputs = [
+    (pythonPackages)
+  ];
   shellHook = ''
     export PYTHONPATH="${pythonPackages}:${PYTHONPATH:-}"
   '';

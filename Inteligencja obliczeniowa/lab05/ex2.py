@@ -1,11 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
-from keras.api.callbacks import History, ModelCheckpoint
-from keras.api.datasets import mnist
-from keras.api.layers import Conv2D, Dense, Flatten, MaxPooling2D
-from keras.api.models import Sequential
-from keras.api.utils import to_categorical
+from tensorflow.keras.callbacks import History, ModelCheckpoint
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.layers import Conv2D, Dense, Flatten, MaxPooling2D
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.utils import to_categorical
 from sklearn.metrics import confusion_matrix
 
 # Load dataset
@@ -39,7 +39,7 @@ model = Sequential(
 model.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"])
 
 # Add fit save callback
-checkpoint_callback = ModelCheckpoint("numbers.keras", save_best_only=True)
+checkpoint_callback = ModelCheckpoint("numbers.xd", save_best_only=True)
 
 # Train model
 history = History()
@@ -101,3 +101,14 @@ for i in range(25):
     plt.imshow(test_images[i].reshape(28, 28), cmap=plt.cm.binary)
     plt.xlabel(predicted_labels[i])
 plt.show()
+
+
+# a) to_categorical zamienia etykiety na binarne. np.argmax zwraca indeksy największych wartości w tablicy. reshape zmienia kształt tablicy.
+
+# b) ???
+
+# c) 2 pomylone z 8 i 5 pomylone z 3
+
+# d) moze wystapic niedouczenie, zelezy od przypadku
+
+# e) wyzej

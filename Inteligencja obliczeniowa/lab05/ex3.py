@@ -1,13 +1,18 @@
+import itertools
 from os import listdir
 
 import tensorflow as tf
-from keras.api.callbacks import (
+from sklearn.metrics import confusion_matrix
+import numpy as np
+from numpy import asarray, load, save
+from sklearn.model_selection import train_test_split
+from tensorflow.keras.callbacks import (
     EarlyStopping,
     History,
     ModelCheckpoint,
     ReduceLROnPlateau,
 )
-from keras.api.layers import (
+from tensorflow.keras.layers import (
     BatchNormalization,
     Conv2D,
     Dense,
@@ -15,11 +20,9 @@ from keras.api.layers import (
     Flatten,
     MaxPooling2D,
 )
-from keras.api.models import Sequential
-from keras.api.optimizers import SGD
-from keras.api.preprocessing.image import img_to_array, load_img
-from numpy import asarray, load, save
-from sklearn.model_selection import train_test_split
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.optimizers import SGD
+from tensorflow.keras.preprocessing.image import img_to_array, load_img
 
 # check if gpu is available
 print(tf.config.list_physical_devices("GPU"))
@@ -100,7 +103,7 @@ model.compile(optimizer=opt, loss="binary_crossentropy", metrics=["accuracy"])
 
 history = History()
 model_checkpoint = ModelCheckpoint(
-    "ex3.keras", monitor="val_accuracy", save_best_only=True
+    "ex3.model", monitor="val_accuracy", save_best_only=True
 )
 
 train_labels = tf.keras.utils.to_categorical(train_labels, num_classes=2)
@@ -114,5 +117,75 @@ model.fit(
     validation_data=(test_photos, test_labels),
     callbacks=[history, model_checkpoint],
 )
+
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(12, 6))
+plt.plot(history.history["accuracy"], label="accuracy")
+plt.plot(history.history["val_accuracy"], label="val_accuracy")
+plt.plot(history.history["loss"], label="loss")
+plt.plot(history.history["val_loss"], label="val_loss")
+plt.legend()
+plt.savefig("ex3.png")
+plt.show()
+
+# confusion matrix using matplotlib
+import matplotlib.pyplot as plt
+
+# Assuming 'odel' and 'test_photos', 'test_labels' are defined in the previous code
+
+# Make predictions
+predictions = model.predict(test_photos)
+
+# Convert predictions to binary labels
+predicted_labels = np.argmax(predictions, axis=1)
+
+# Create confusion matrix
+cm = confusion_matrix(np.argmax(test_labels, axis=1), predicted_labels)
+
+# Define labels for the confusion matrix
+class_names = ["Cat", "Dog"]
+
+
+# Plot confusion matrix
+def plot_confusion_matrix(
+    cm, classes, normalize=False, title="Confusion matrix", cmap=plt.cm.Blues
+):
+    if normalize:
+        cm = cm.astype("float") / cm.sum(axis=1)[:, np.newaxis]
+        print("Normalized confusion matrix")
+    else:
+        print("Confusion matrix, without normalization")
+
+    print(cm)
+
+    plt.imshow(cm, interpolation="nearest", cmap=cmap)
+    plt.title(title)
+    plt.colorbar()
+    tick_marks = np.arange(len(classes))
+    plt.xticks(tick_marks, classes, rotation=45)
+    plt.yticks(tick_marks, classes)
+
+    fmt = ".2f" if normalize else "d"
+    thresh = cm.max() / 2.0
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(
+            j,
+            i,
+            format(cm[i, j], fmt),
+            horizontalalignment="center",
+            color="white" if cm[i, j] > thresh else "black",
+        )
+
+    plt.ylabel("True label")
+    plt.xlabel("Predicted label")
+    plt.tight_layout()
+
+
+# Call the function to plot the confusion matrix
+plot_confusion_matrix(cm, class_names)
+plt.savefig("ex3_confusion_matrix.png")
+plt.show()
 
 model.evaluate(test_photos, test_labels)
