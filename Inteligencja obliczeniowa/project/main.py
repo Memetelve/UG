@@ -15,7 +15,7 @@ def main():
     # Train model
     model.train(
         data=model_config,
-        epochs=20,
+        epochs=180,
         batch=24,
         imgsz=640,
         name="exp",
