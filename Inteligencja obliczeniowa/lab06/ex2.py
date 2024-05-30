@@ -10,7 +10,7 @@ gray = img[:, :, 0] * 0.114 + img[:, :, 1] * 0.587 + img[:, :, 2] * 0.299
 cv2.imwrite("gray_image.jpg", gray)
 
 # show the grayscale image
-cv2.imshow("Gray Image", gray)
+# cv2.imshow("Gray Image", gray)
 
 # convert manually to grayscale
 gray_manual = img[:, :, 0] * 0.333 + img[:, :, 1] * 0.333 + img[:, :, 2] * 0.333

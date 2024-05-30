@@ -2,33 +2,38 @@ from ultralytics import YOLO
 import torch
 
 
-def main():
-    # model_config = "data/data.yaml"
-    model_config = "data/data_big.yaml"
+model_config = "data/data.yaml"
+model_weights = "yolo.pt"
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    print(f"Using {device} for training")
+# training params
+batch_size = 8
+epochs = 100
+device = "cuda" if torch.cuda.is_available() else "cpu"
+print(f"Using {device} for training")
 
-    # Initialize model
-    model = YOLO()
+train_img_dir = "data/train/images"
+train_label_dir = "data/train/labels"
 
-    # Train model
-    model.train(
-        data=model_config,
-        epochs=180,
-        batch=24,
-        imgsz=640,
-        name="exp",
-        optimizer="auto",
-        lr0=0.0001,
-        lrf=0.1,
-        dropout=0.1,
-        workers=0,
-    )
+val_img_dir = "data/val/images"
+val_label_dir = "data/val/labels"
 
-    # Evaluate model
-    # model.predict
+# Initialize model
+model = YOLO()
 
+# Train model
+model.train(
+    data=model_config,
+    epochs=epochs,
+    batch=batch_size,
+    imgsz=640,
+    project="runs/train",
+    name="exp",
+)
 
-if __name__ == "__main__":
-    main()
+# Evaluate model
+results = model.evaluate(
+    img_dir=val_img_dir,
+    label_dir=val_label_dir,
+    batch_size=batch_size,
+    img_size=640,
+)

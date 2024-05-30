@@ -1,3 +1,4 @@
+
 { pkgs ? import <nixpkgs> {}, config ? {} }:
 let
   pythonPackages = pkgs.python3.withPackages (ps: [
@@ -7,20 +8,14 @@ let
     ps.keras-preprocessing
     ps.keras-applications
     ps.scikit-learn
-    ps.pandas
-    ps.numpy
+    ps.matplotlib
+    ps.pydot
+    ps.seaborn
     ps.opencv4
-    pkgs.gtk2
-    pkgs.pkg-config
   ]);
 in
 pkgs.mkShell {
   name = "tf";
-  # packages = [
-  #   (pkgs.python3.withPackages (python-pkgs: [
-  #     (pkgs.callPackage ./python-packages.nix)
-  #   ]))
-  # ];
   buildInputs = [
     (pythonPackages)
   ];
