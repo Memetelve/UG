@@ -6,13 +6,13 @@ from sklearn.metrics import confusion_matrix
 import numpy as np
 from numpy import asarray, load, save
 from sklearn.model_selection import train_test_split
-from tensorflow.keras.callbacks import (
+from keras.callbacks import (
     EarlyStopping,
     History,
     ModelCheckpoint,
     ReduceLROnPlateau,
 )
-from tensorflow.keras.layers import (
+from keras.layers import (
     BatchNormalization,
     Conv2D,
     Dense,
@@ -20,9 +20,9 @@ from tensorflow.keras.layers import (
     Flatten,
     MaxPooling2D,
 )
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.optimizers import SGD
-from tensorflow.keras.preprocessing.image import img_to_array, load_img
+from keras.models import Sequential
+from keras.optimizers import SGD
+from keras.preprocessing.image import img_to_array, load_img
 
 # check if gpu is available
 print(tf.config.list_physical_devices("GPU"))

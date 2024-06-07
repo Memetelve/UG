@@ -4,3 +4,5 @@ Wstęp do programowania/projekt/__pycache__/
 out/
 *.npy
 *.zip
+env/
+bin/

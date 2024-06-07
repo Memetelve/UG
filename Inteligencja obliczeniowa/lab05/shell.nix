@@ -24,6 +24,9 @@ let
     ps.matplotlib
     ps.pydot
     ps.seaborn
+    ps.rich
+    ps.optree
+    ps.ml-dtypes
   ]);
 in
 pkgs.mkShell {
