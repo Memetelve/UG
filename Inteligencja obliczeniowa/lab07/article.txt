@@ -1,0 +1,140 @@
+As we continue to experiment with the unlimited possibilities of artificial intelligence (AI) and digital twin technology, we’re no longer confining ourselves and the technology helping us bridge the gap within the realm of science fiction.
+
+
+Advancements in AI applications have meant that digital twin technology can now accurately replicate any system or person’s processes, creating a doctored digital environment that’s richer, more sophisticated, and nearly identical to the original thing.
+
+Though digital twin technology, along with artificial intelligence, has meant that more people and businesses can now automate mundane tasks - helping minimize the amount of time employees and individuals are spending on unnecessary activities - in theory and practice, digital twin applications are beginning to evoke privacy concerns, the possibility of identity theft, and the use of deepfakes to fuel the spread of misinformation.
+
+
+Fake, AI-generated images and videos that are near-exact replicas of real people aren't the only thing going around and upending the internet. Stories of fraudsters obtaining digital audio and cloning people’s voices from a mere three seconds of audio are now causing a greater deal of concern among authorities.
+
+
+Some industry insights indicate that roughly 77 percent of American internet users reported being duped by AI-generated look-alikes and content online.
+
+
+However, now developers, along with users, are standing at the intersection of understanding how lawmakers can begin to challenge digital frameworks, and further reshape the processes to protect individuals' digital identities and privacy across the Internet of Things.
+Have You Seen My Digital Twin?
+
+We’ve seen digital technology create an array of remarkable experiences in recent years, and alongside artificial intelligence, we’re now standing at the forefront of the next generation of computer and machine learning capabilities that will push us into the next frontier.
+
+As possibilities become endless, new methods of digitalization are helping us to develop a sort of framework system that can take our place in the digital ecosystem while we still have the freedom to live a more carefree life here on earth.
+
+
+The development of digital twin technology enables users and the applications we use throughout our daily lives to become more automated and leverage advanced technology to study and learn our routines for a more personalized experience.
+
+Digital twin technology is the process in which an object or individual is outfitted with a plethora of electric sensors that monitor vital areas of functionality, according to researchers from IBM.
+
+
+By running multiple tests and constantly keeping track of various input and output mechanisms, computerized software can begin to produce data about the different aspects of an object or person’s performance. The ultimate goal is to use the available data and apply this to a digital copy to recreate various scenarios or to put it through different types of tests.
+
+With this data, tech companies can begin studying how objects perform under certain conditions and how modifications to systems can improve the performance of an object.
+
+
+Imagine being able to hand over all of your mundane or routine tasks to a digital copy of yourself, helping to free up more of your time and removing unnecessary activities from your daily schedule.
+
+From what we have learned from history, it’s possible to apply technology in such a way that we can replicate ourselves, to some extent, in the virtual world and become more efficient in our real-world lives without having to sacrifice more of our time and capabilities.
+
+For tech companies pioneering this level of technology, digital twin models can help them conduct tests and studies in different simulations and make enhancements that will help improve the original prototype.
+
+
+This technology is incredibly useful to better understand how certain objects function under different conditions and errors, and by using the relevant data, how can the necessary improvements enhance the original entity but ensure that future versions are more efficient and capable of undergoing more rigorous testing or scenarios?
+The Cracks In The Digital Makeup Of AI-Generated Dupes
+
+In theory, digital twin technology and AI-powered applications are designed to make our lives more efficient and help us be more productive. Not only is this technology designed to enhance human beings, but on a scientific level as well.
+
+The next generation of AI-powered technology will enable us to make improvements to our current systems, allow us to make better and more accurate decisions, and completely change how we live and work.
+
+
+Though, what happens when this technology isn’t being put into practice for its intended use? Better yet, how do we decipher what’s real or fake when fraudsters are pulling the digital strings that are now rapidly shaping our reality?
+
+As AI-powered technology becomes more advanced, so have the outcomes thereof become more sophisticated. The internet has now become inundated with AI-generated content, everything from images, videos, and music to articles and audio recordings of well-known celebrities and social media influencers.
+
+
+In January this year, fabricated images of Taylor Swift had the internet in a seemingly digital chokehold after images surfaced of Swift being featured in explicit and somewhat pornographic content. The images quickly made the rounds on the internet, being viewed more than 47 million times before the account was suspended, according to a report by the New York Times.
+
+
+This isn’t the first time AI-powered applications have been used to create explicit content. In October 2020, researchers reported uncovering more than 100,000 digitally fabricated nude images of women that were created without their consent, nor were they aware of the fact that their physical features were being used, according to the U.S. Department of Homeland Security.
+
+
+Elsewhere, experts have found that between 90 and 95 percent of deepfake videos shared and published online since 2018 were constructed and based on non-consensual pornography.
+
+In July 2023, a frightened and confused mother nearly paid more than $50,000 in ransom money to fraudsters after being contacted and led to believe that her daughter was being held captive.
+
+
+Fortunately, the mother managed to connect the dots quickly and realized that the setup was a hoax and that she was contacted by a group of scammers using AI applications to mimic her daughter's voice with the aim to fraud thousands of dollars out of unsuspecting victims.
+
+Voice-generated scams are now impacting one in four adults, according to a recent survey by McAfee. But you might be wondering how scammers can replicate not only images but a person’s voice.
+
+
+By using Generative Adversarial Network (GAN) technology, any person around the world can now generate content based on a series of prompts and relevant data. GAN technology was developed back in 2014 as a class of machine learning tools that creates and evaluates the likeliness of images.
+
+GAN frameworks are simply another branch of AI-powered technology, and coupled with the abilities of digital twin applications, this technology has near-limitless potential. AI-generated content is becoming a more common feature on social media and the internet each day, with experts now predicting up to 90 percent of content being AI-generated by 2026.
+
+Though it’s amusing to witness the outcomes of this technology, a darker side of this technology is now starting to boil below the surface as users begin to question how their data is being used to train new language and learning models.
+
+
+With the amount of new content being created using AI technology, deciphering real from fake has become a challenging activity that not only requires smarter artificial machines but also educating users about the potential dangers this technology poses in the near future.
+
+Evidently, experts suggest that we’re now entering an era of “identity hijacking,” which sees malicious actors not only taking and using our names and other personal information but instead claiming our identities and using technology to recreate our physical features, voice and build a virtual version of ourselves that’s not only an exact copy but is indistinguishable from the real thing.
+
+
+This is all taking place right in front of us, but it is done without our consent or authorization. And with billions of data points available online, bad actors are standing on the shoulders of a treasure trove of information they can use to twist and distort our reality without us ever realizing what’s happening.
+Our Digitally Fabricated World
+
+In an era of misinformation, and where social media is being plagued with fake and non-factual information, scammers now stand to benefit from using AI-powered technology to masquerade as public figures without us ever suspecting anything different.
+
+As more of our information is being scrapped from the internet and used to teach machine learning applications more complex patterns, the endless opportunities these applications will have to analyze and learn more effectively, but more importantly, expertly mimic the information in a way that twists our understanding of reality.
+
+
+Deepfake and AI-generated content aren’t only causing confusion among ourselves but also leaving a long-lasting sociological and psychological impact on people who have been negatively affected or previously had a negative experience with AI-generated doppelgangers.
+
+In one study, researchers noted that doppelganger-phobia is the result of abusive AI clones that exploit and displace the identity of individuals and elicit a negative emotional reaction.
+
+
+Furthermore, researchers from the same study highlight that AI-generated digital twins will create a discourse in the way humans interact with technology and further impact humans’ identity and their interpersonal relationships.
+
+Having a digital clone might seem like the ultimate reality; however, these artificial replicas have the potential to threaten individuals' cohesive self-perception and their individuality.
+
+
+However, when this technology is used to help with the administration of medication, monitor patient needs, and transmit wirelessly, a digital twin might seem like the best-case scenario.
+
+Knowing that this technology isn’t all bad and uncovering the long-term possibilities that can enable the next generation of telemedicine would mean that patients are treated more effectively and the proper diagnostics are given each time.
+
+Though the possibilities are near endless, partnerships between public and private entities should ensure the protection or safekeeping of patient information and allow for fair and equal shared experiences.
+
+
+While the technology may exist, the legal and jurisdictional framework to protect individuals against illicit and illegal data harvesting through the practices of artificial intelligence is still in the process of development.
+
+These interdisciplinary collaborations aren’t only important at the forefront of healthcare practices. Instead, these efforts should encourage a comprehensive roadmap that would provide a better understanding of how AI technology can be developed and applied within a space whereby legal implications are taken into account and bring more established assurance for users.
+Navigating Future Challenges Of AI-Generated Twins
+
+With AI-generated content becoming more commonplace on the internet and social media, users and central authorities are beginning to question how we can manage artificially generated applications and ensure the preservation of authenticity.
+Legal and Privacy Concerns
+
+The use of deepfake technology to clone or imitate individuals, both private and public, will infringe on individual privacy. More than this, using AI-powered applications to recreate a person’s name, image, or likeness without their prior permission or knowledge could infringe on their right to publicity and potentially cause a string of serious violations.
+Data Privacy
+
+Companies continue to track and share valuable customer-related information. For tech companies using AI-powered applications, this data enables them to train new software and build digital models that reflect both real people and real-world scenarios. The data shared between companies are not only extremely valuable but regulating these activities is becoming more difficult as well due to the level of sophistication of new applications and the amount of data that’s being shared and stored by various companies.
+User Surveillance
+
+Companies are tracking their users across a plethora of data points to access the data required to use machine learning applications. By monitoring these outlets, companies can better understand their customers and their basic usage patterns, provide a more personalized experience, and make improvements ahead of time.
+
+
+However, these outlets can serve as a way to monitor users more closely, often blurring the lines of privacy infringement. These activities contribute to the additional provisions required to ensure the protection of user data and publicly available information.
+Availability of Resources and Training
+
+In recent months, the White House, along with the Biden Administration, has announced its approach to regulating artificial intelligence with the introduction of an executive order. With the executive order, the federal government is seeking to provide all federal agencies and employees with the proper training and education necessary to better understand how AI tools can be used more appropriately.
+
+These actions, while still in the process of being implemented, require a much broader approach that would see the government invest in proper resources that would help ordinary individuals learn and become more educated about AI-generated content and prioritize digital safety for all people.
+Transparency Requirements
+
+Allowing users to know when new information about them is being collected or which type of data is being used remains something many regulators are still not completely familiar with. In June 2023, the European Commission approved the A.I. Act, the first of its kind in the industry that would seek to provide users with more transparency regarding how much information is being collected on them and how this information will be used.
+
+Developments such as this enable lawmakers to have a clear view of how to use their enforcement for the improvement of user privacy and safety. It shines a light in the dark corners of the tech industry and ensures that every company follows the same level of transparency that puts the privacy and security of users at the forefront.
+Finishing Thoughts
+
+Though it’s unclear whether we each have a digital twin, somewhere in the vastness of the internet, protecting our digital identity is becoming a challenge that’s presenting lawmakers and regulators with difficult questions and leaving much of it unanswered.
+
+The thought of one day having a digital twin means that we will need to give up a bit of our identity in the process. For many people, this raises some ethical concerns, while others might feel that a digital twin can provide them with plenty of new possibilities.
+
+Finding a balance isn’t easy, and until we have a clear understanding of how we can protect ourselves, impose proper regulation, and have more transparent practices, we’re faced with being in a state of tug and pull, never knowing when we will fall victim of artificially generated fraud, perpetrated by our own identity.
