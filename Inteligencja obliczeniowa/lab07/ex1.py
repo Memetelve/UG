@@ -8,7 +8,7 @@ from wordcloud import WordCloud
 
 matplotlib.use("QtAgg")
 
-nltk.download(["punkt", "stopwords", "wordnet"])
+nltk.download(["punkt", "stopwords", "wordnet", "vader_lexicon"])
 
 with open("article.txt", "r") as fh:
     article = fh.read()

@@ -104,6 +104,23 @@ docs = ["ipython", "matplotlib", "numpydoc", "sphinx"]
 tests = ["pytest", "pytest-cov", "pytest-xdist"]
 
 [[package]]
+name = "emoji"
+version = "2.12.1"
+description = "Emoji for Python"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "emoji-2.12.1-py3-none-any.whl", hash = "sha256:a00d62173bdadc2510967a381810101624a2f0986145b8da0cffa42e29430235"},
+    {file = "emoji-2.12.1.tar.gz", hash = "sha256:4aa0488817691aa58d83764b6c209f8a27c0b3ab3f89d1b8dceca1a62e4973eb"},
+]
+
+[package.dependencies]
+typing-extensions = ">=4.7.0"
+
+[package.extras]
+dev = ["coverage", "pytest (>=7.4.4)"]
+
+[[package]]
 name = "fonttools"
 version = "4.53.0"
 description = "Tools to manipulate font files"
@@ -702,6 +719,21 @@ files = [
 ]
 
 [[package]]
+name = "text2emotion"
+version = "0.0.5"
+description = "Detecting emotions behind the text, text2emotion package will help you to understand the emotions in textual meassages."
+optional = false
+python-versions = "*"
+files = [
+    {file = "text2emotion-0.0.5-py3-none-any.whl", hash = "sha256:3724a0a610f3a35ada599de0b9a1deff5b8902fb55078596236c31505ee75421"},
+    {file = "text2emotion-0.0.5.tar.gz", hash = "sha256:a7868ff1aee3362491c9ca094ae3d975678693aaa5e9144d1ad0eb64dd8f32e8"},
+]
+
+[package.dependencies]
+emoji = ">=0.6.0"
+nltk = "*"
+
+[[package]]
 name = "tqdm"
 version = "4.66.4"
 description = "Fast, Extensible Progress Meter"
@@ -720,6 +752,17 @@ dev = ["pytest (>=6)", "pytest-cov", "pytest-timeout", "pytest-xdist"]
 notebook = ["ipywidgets (>=6)"]
 slack = ["slack-sdk"]
 telegram = ["requests"]
+
+[[package]]
+name = "typing-extensions"
+version = "4.12.2"
+description = "Backported and Experimental Type Hints for Python 3.8+"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "typing_extensions-4.12.2-py3-none-any.whl", hash = "sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d"},
+    {file = "typing_extensions-4.12.2.tar.gz", hash = "sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"},
+]
 
 [[package]]
 name = "wordcloud"
@@ -802,4 +845,4 @@ pillow = "*"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "40cc7b7cdd04e91b5bf3a3cb8fa8b3943ad437ad09878e993d248fb2e9be1e21"
+content-hash = "eb72e331fe818288ada4c7627a6910d4220ecba4856663e971cad485985be514"
