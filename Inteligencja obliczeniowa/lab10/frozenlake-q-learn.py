@@ -34,8 +34,8 @@ def choose_action(state):
 rewards = []
 
 for episode in range(num_episodes):
-    if episode % 100 == 0:
-        print(f"Running episode {episode}/{num_episodes}")
+    # if episode % 100 == 0:
+    #     print(f"Running episode {episode}/{num_episodes}")
     state = env.reset()[0]
     total_rewards = 0
 
@@ -55,7 +55,7 @@ for episode in range(num_episodes):
             break
 
     rewards.append(total_rewards)
-    print(q_table)
+    # print(q_table)
 
 print("Q-table after training:")
 print(q_table)
@@ -111,8 +111,8 @@ policy = extract_policy(q_table)
 policy_moves = [action_to_char(action) for action in policy]
 
 print("Best policy moves:")
-for i in range(0, len(policy_moves), 8):
-    print(policy_moves[i : i + 8])
+for i in range(0, len(policy_moves), 4):
+    print(policy_moves[i : i + 4])
 
 # Display the FrozenLake map
 print("\nFrozenLake Map:")

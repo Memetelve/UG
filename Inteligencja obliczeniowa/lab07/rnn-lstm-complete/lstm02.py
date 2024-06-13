@@ -1,17 +1,11 @@
 # Small LSTM Network to Generate Text for Alice in Wonderland
 import numpy as np
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.layers import Dropout
-from keras.layers import LSTM
-from keras.callbacks import ModelCheckpoint
-from keras.utils import to_categorical
-import tensorflow as tf
-
-
-print(tf.config.list_physical_devices("GPU"))
-
-# exit()
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Dropout
+from tensorflow.keras.layers import LSTM
+from tensorflow.keras.callbacks import ModelCheckpoint
+from tensorflow.keras.utils import to_categorical
 
 # load ascii text and covert to lowercase
 filename = "wonderland.txt"
@@ -56,10 +50,10 @@ model.add(Dense(y.shape[1], activation="softmax"))
 # model.load_weights(filename)
 model.compile(loss="categorical_crossentropy", optimizer="adam")
 # define the checkpoint
-filepath = "weights-improvement-{epoch:02d}-{loss:.4f}.keras"
+filepath = "weights-improvement-{epoch:02d}-{loss:.4f}.hdf5"
 checkpoint = ModelCheckpoint(
     filepath, monitor="loss", verbose=1, save_best_only=True, mode="min"
 )
 callbacks_list = [checkpoint]
 # fit the model
-model.fit(X, y, epochs=3, batch_size=512, callbacks=callbacks_list)
+model.fit(X, y, epochs=50, batch_size=128, callbacks=callbacks_list)

@@ -83,4 +83,4 @@ print(
 )
 
 # wyswietlenie wykresu: jak zmieniala sie ocena na przestrzeni pokolen
-ga_instance.plot_fitness(save_dir="./fitness_plot/xd.png")
+ga_instance.plot_fitness(save_dir="./png/xd.png")
