@@ -1,219 +1,128 @@
-import itertools
 import sys
+import time
 
-import numpy
 import pygad
-from colorama import Back, Style
 
-# CaskaydiaCove Nerd Font
-
-if len(sys.argv) > 1 and sys.argv[1] == "-d":
-    DEBUG_MODE = True
-else:
-    DEBUG_MODE = False
-
-INIT_BOARD = [
-    [0, 0, 9, 0, 0, 0, 0, 0, 8, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0],
-    [0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 16],
-    [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 12, 0, 8, 0, 11, 0, 3, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3],
-    [7, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
-    [0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 2, 0, 0, 0, 0, 0, 5, 0, 0],
-]
-
-CHROMOSOME_LENGTH = sum(sum(cell == 0 for cell in row) for row in INIT_BOARD)
-INITIAL_SOLUTION = [0] * CHROMOSOME_LENGTH
-
-print("Chromosome Length: ", CHROMOSOME_LENGTH)
-
-
-def check_visible_from(x, y, board):
-
-    if board[y][x] <= 0:
-        raise ValueError("Wrong visibility cell check")
-
-    horizontal_visible = 0
-    vertical_visible = 0
-
-    for y1 in range((len(board))):
-
-        if board[y1][x] == -1:
-            if y1 < y:
-                vertical_visible = 0
-                continue
-            elif y1 > y:
-                break
-            else:
-                raise ValueError("Invalid board state")
-
-        vertical_visible += 1
-
-    for x1 in range((len(board[y]))):
-
-        if board[y][x1] == -1:
-            if x1 < x:
-                horizontal_visible = 0
-                continue
-            elif x1 > x:
-                break
-            else:
-                raise ValueError("Invalid board state")
-
-        horizontal_visible += 1
-
-    return vertical_visible + horizontal_visible - 1
-
-
-def fitness_func(a, solution, b):
-    board = combine_board_and_solution(INIT_BOARD, solution)
-    score = 0
-
-    for y, row in enumerate(board):
-        for x, cell in enumerate(row):
-            if cell > 0:
-                cell_score = check_visible_from(x, y, board)
-                if cell_score != cell:
-                    score -= abs(cell - cell_score)
-                else:
-                    score += cell
-    return score
-
-
-def print_board(solution, board=INIT_BOARD):
-    board = combine_board_and_solution(board, solution)
-
-    colors = [
-        Back.BLUE if i % 2 == 0 else Back.LIGHTCYAN_EX for i in range(len(board[0]) * 2)
-    ]
-
-    for row in board:
-        # shift colors by one
-        colors = [colors[-1]] + colors[:-1]
-
-        for x, cell in enumerate(row):
-            if cell == 0:
-                print(f"{colors[x]}  ", end="")
-            elif cell == -1:
-                print(f"{Back.MAGENTA}  ", end="")
-            else:
-                print(f"{colors[x]}{cell:2}", end="")
-        print(Style.RESET_ALL)
-
-
-def combine_board_and_solution(board, solution):
-
-    new_board = [row.copy() for row in board]
-    solution = solution.copy()
-
-    if isinstance(solution, numpy.ndarray):
-        solution = solution.tolist()
-
-    new_board = [row.copy() for row in new_board]
-    for row in range(len(new_board)):
-        for col in range(len(new_board[row])):
-            if new_board[row][col] == 0:
-                new_board[row][col] = solution.pop(0)
-
-    return new_board
+from swarms import solve_with_swarms
+from board import INITIAL_SOLUTION
+from fittness import Fittness
+from utils import (
+    crossover_type,
+    find_best_params,
+    gene_space,
+    mutation_percent_genes,
+    mutation_type,
+    num_generations,
+    num_parents_mating,
+    parent_selection_type,
+    print_board,
+    sol_per_pop,
+    load_boards_from_file,
+    prompt_user_for_board_index,
+)
 
 
 def on_generation(ga_instance):
     print(ga_instance.generations_completed)
-
     return False
 
 
-sol_per_pop = 1000
-num_generations = 100
-num_parents_mating = 5
-num_genes = CHROMOSOME_LENGTH
-gene_space = [-1, 0]
+if len(sys.argv) > 1:
+    if sys.argv[1] == "-d":
+        INITIAL_SOLUTION[0] = -1
+        INITIAL_SOLUTION[4] = -1
+        INITIAL_SOLUTION[10] = -1
+        INITIAL_SOLUTION[13] = -1
+        INITIAL_SOLUTION[15] = -1
+        INITIAL_SOLUTION[34] = -1
+        INITIAL_SOLUTION[36] = -1
+        INITIAL_SOLUTION[38] = -1
+        INITIAL_SOLUTION[41] = -1
+        INITIAL_SOLUTION[45] = -1
+        INITIAL_SOLUTION[52] = -1
+        INITIAL_SOLUTION[57] = -1
+        INITIAL_SOLUTION[63] = -1
+        INITIAL_SOLUTION[64] = -1
+        INITIAL_SOLUTION[69] = -1
+        INITIAL_SOLUTION[71] = -1
+        INITIAL_SOLUTION[74] = -1
+        INITIAL_SOLUTION[76] = -1
+        INITIAL_SOLUTION[79] = -1
+        INITIAL_SOLUTION[81] = -1
+        INITIAL_SOLUTION[89] = -1
+        INITIAL_SOLUTION[95] = -1
+        INITIAL_SOLUTION[96] = -1
+        INITIAL_SOLUTION[98] = -1
+        INITIAL_SOLUTION[102] = -1
 
-# sss, rsw, sus, rank, random, tournament, tournament_nsga2, nsga2
-parent_selection_list = ["sss", "rws", "sus", "rank", "random", "tournament"]
-mutation_type_list = ["random", "swap", "inversion", "scramble", "adaptive"]
+        board_from_file = load_boards_from_file()[0]
 
-parent_selection_type = "random"
-mutation_type = "random"
-mutation_percent_genes = "default"
+        Fittness.change_board(board_from_file)
 
-final_results = []
+        print_board(INITIAL_SOLUTION, Fittness.board)
 
-for p, m in itertools.product(parent_selection_list, mutation_type_list):
-    results = []
+        print(Fittness.complicated(0, INITIAL_SOLUTION, 0))
+        print(Fittness.simple(0, INITIAL_SOLUTION, 0))
 
-    current_results = []
+    elif sys.argv[1] == "-g":
 
-    for _ in range(10):
-        try:
-            ga_instance = pygad.GA(
-                num_generations=num_generations,
-                num_parents_mating=num_parents_mating,
-                fitness_func=fitness_func,
-                sol_per_pop=sol_per_pop,
-                num_genes=CHROMOSOME_LENGTH,
-                gene_space=gene_space,
-                # on_generation=on_generation,
-                mutation_percent_genes=mutation_percent_genes,
-                parent_selection_type=p,
-                mutation_type=m,
-            )
+        if len(sys.argv) > 2 and sys.argv[2] == "-i":
+            boards = load_boards_from_file()
+            chosen = prompt_user_for_board_index(boards)
+            board_from_file = boards[chosen]
+            Fittness.change_board(board_from_file)
+        else:
+            board_from_file = load_boards_from_file()[1]
 
-            ga_instance.run()
-            solution, solution_fitness, solution_idx = ga_instance.best_solution()
+        Fittness.change_board(board_from_file)
+        chromoseme_length = sum(
+            sum(cell == 0 for cell in row) for row in Fittness.board
+        )
 
-            current_results.append(solution_fitness)
+        time_start = time.time()
 
-        except Exception:
-            print("Not compatible with ", p, m)
-            continue
+        ga_instance = pygad.GA(
+            num_generations=num_generations,
+            num_parents_mating=num_parents_mating,
+            fitness_func=Fittness.complicated,
+            sol_per_pop=sol_per_pop,
+            num_genes=chromoseme_length,
+            gene_space=gene_space,
+            mutation_percent_genes=mutation_percent_genes,
+            parent_selection_type=parent_selection_type,
+            mutation_type=mutation_type,
+            crossover_type=crossover_type,
+            # on_generation=on_generation,
+            suppress_warnings=True,
+        )
 
-        results.append(sum(current_results) / len(current_results))
+        ga_instance.run()
+        solution, solution_fitness, solution_idx = ga_instance.best_solution()
+        time = (time.time() - time_start) * 1000
 
-    final_results.append((p, m, sum(results) / max(1, len(results))))
+        print(f"Fitness value of the best solution = {solution_fitness}")
+        print(f"Time spent = {time:.2f}ms")
 
+        print_board(solution, Fittness.board)
 
-# sort final results
-final_results = sorted(final_results, key=lambda x: x[2], reverse=True)
+        ga_instance.plot_fitness().savefig("images/results.png")
 
-with open("results.txt", "w") as f:
-    for p, m, r in final_results:
-        f.write(f"{p} {m} {r}\n")
+    elif sys.argv[1] == "-find":
+        find_best_params()
 
+    elif sys.argv[1] == "-h":
+        print("Usage:")
+        print("python kuromasu.py -d")
+        print("python kuromasu.py -g")
+        print("python kuromasu.py -g -i")
+        print("python kuromasu.py -s")
+        print("python kuromasu.py -find")
+        print("python kuromasu.py -h")
 
-if DEBUG_MODE:
-    INITIAL_SOLUTION[0] = -1
-    INITIAL_SOLUTION[4] = -1
-    INITIAL_SOLUTION[10] = -1
-    INITIAL_SOLUTION[13] = -1
-    INITIAL_SOLUTION[15] = -1
-    INITIAL_SOLUTION[34] = -1
-    INITIAL_SOLUTION[36] = -1
-    INITIAL_SOLUTION[38] = -1
-    INITIAL_SOLUTION[41] = -1
-    INITIAL_SOLUTION[45] = -1
-    INITIAL_SOLUTION[52] = -1
-    INITIAL_SOLUTION[57] = -1
-    INITIAL_SOLUTION[63] = -1
-    INITIAL_SOLUTION[64] = -1
-    INITIAL_SOLUTION[69] = -1
-    INITIAL_SOLUTION[71] = -1
-    INITIAL_SOLUTION[74] = -1
-    INITIAL_SOLUTION[76] = -1
-    INITIAL_SOLUTION[79] = -1
-    INITIAL_SOLUTION[89] = -1
-    INITIAL_SOLUTION[95] = -1
-    INITIAL_SOLUTION[96] = -1
-    INITIAL_SOLUTION[98] = -1
-    INITIAL_SOLUTION[102] = -1
+    elif sys.argv[1] == "-s":
+        # solve using swarms
+        cont, pos = solve_with_swarms(load_boards_from_file()[4])
 
-    print_board(INITIAL_SOLUTION)
+        pos = [int(round(i, 0)) for i in pos]
 
-    board = combine_board_and_solution(INIT_BOARD, INITIAL_SOLUTION)
-
-    print(fitness_func(0, INITIAL_SOLUTION, 0))
+        print_board(pos, Fittness.board)

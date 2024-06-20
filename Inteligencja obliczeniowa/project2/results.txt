@@ -1,30 +1,120 @@
-sss random 94.65579365079365
-sss scramble 67.89904761904761
-sss inversion 43.02392857142858
-tournament scramble 35.86730158730159
-tournament random 32.08222222222223
-tournament inversion 31.65246031746032
-tournament swap 27.253333333333337
-sss swap 26.9093253968254
-random inversion 13.196230158730156
-random scramble 12.13095238095238
-random random 10.907857142857145
-sus random 4.679960317460317
-sus inversion 3.3878571428571425
-sss adaptive 0.0
-rws adaptive 0.0
-sus adaptive 0.0
-rank adaptive 0.0
-random adaptive 0.0
-tournament adaptive 0.0
-rws random -0.4290476190476191
-sus scramble -0.6558730158730156
-rws inversion -1.5117460317460316
-rws scramble -3.1749603174603176
-random swap -8.519841269841269
-rank swap -11.658611111111112
-rank inversion -11.780317460317459
-rank scramble -13.706666666666667
-rws swap -13.859523809523811
-sus swap -16.49948412698413
-rank random -17.358492063492065
+86.8 sss random scattered
+86.35 tournament random single_point
+85.25 sss random two_points
+83.85 tournament random uniform
+83.25 sss random uniform
+82.75 sss random single_point
+78.6 tournament random scattered
+75.5 tournament random two_points
+55.05 sss inversion scattered
+53.6 sss inversion uniform
+50.65 sss inversion two_points
+50.0 sss scramble scattered
+48.4 sss scramble two_points
+48.25 sss inversion single_point
+48.2 sss scramble single_point
+46.95 sss scramble uniform
+45.8 sss swap scattered
+43.3 sss swap uniform
+27.45 tournament scramble two_points
+26.8 tournament swap scattered
+25.6 sss swap single_point
+25.35 tournament swap uniform
+24.25 tournament scramble single_point
+23.35 sss swap two_points
+22.3 tournament inversion two_points
+21.1 tournament scramble scattered
+20.85 tournament swap single_point
+20.8 tournament scramble uniform
+19.9 tournament inversion single_point
+18.4 tournament inversion scattered
+17.5 tournament swap two_points
+17.45 tournament inversion uniform
+3.5 random scramble uniform
+2.15 random inversion single_point
+1.9 random scramble two_points
+1.7 random random single_point
+0.5 random scramble single_point
+0.0 sss adaptive single_point
+0.0 sss adaptive two_points
+0.0 sss adaptive uniform
+0.0 sss adaptive scattered
+0.0 rws adaptive single_point
+0.0 rws adaptive two_points
+0.0 rws adaptive uniform
+0.0 rws adaptive scattered
+0.0 sus adaptive single_point
+0.0 sus adaptive two_points
+0.0 sus adaptive uniform
+0.0 sus adaptive scattered
+0.0 rank adaptive single_point
+0.0 rank adaptive two_points
+0.0 rank adaptive uniform
+0.0 rank adaptive scattered
+0.0 random adaptive single_point
+0.0 random adaptive two_points
+0.0 random adaptive uniform
+0.0 random adaptive scattered
+0.0 tournament adaptive single_point
+0.0 tournament adaptive two_points
+0.0 tournament adaptive uniform
+0.0 tournament adaptive scattered
+-1.8 random inversion scattered
+-2.5 random scramble scattered
+-4.35 random inversion two_points
+-5.45 random random scattered
+-5.7 rws scramble scattered
+-6.35 random inversion uniform
+-7.05 sus inversion uniform
+-7.25 random swap single_point
+-8.15 rws scramble two_points
+-8.15 rws scramble uniform
+-8.7 rws inversion two_points
+-8.75 sus inversion scattered
+-8.8 sus scramble scattered
+-8.9 sus scramble uniform
+-9.5 sus scramble two_points
+-9.85 random random two_points
+-10.0 random random uniform
+-10.05 random swap uniform
+-10.35 sus scramble single_point
+-11.0 rws inversion uniform
+-11.0 rws scramble single_point
+-11.55 rws inversion scattered
+-11.75 rws inversion single_point
+-13.85 sus inversion single_point
+-13.95 rank inversion uniform
+-14.75 random swap two_points
+-14.9 sus inversion two_points
+-14.95 random swap scattered
+-18.0 rank inversion scattered
+-19.4 rws random scattered
+-20.25 rws random single_point
+-20.3 rank inversion single_point
+-20.4 rws random two_points
+-20.9 sus swap single_point
+-21.2 rank inversion two_points
+-21.35 rws swap scattered
+-21.7 rws random uniform
+-22.45 rank scramble single_point
+-22.7 rank scramble scattered
+-22.9 sus swap scattered
+-23.3 sus random uniform
+-23.4 rank scramble uniform
+-23.45 rank scramble two_points
+-23.75 sus random scattered
+-24.0 sus random single_point
+-25.55 rws swap uniform
+-26.5 rws swap single_point
+-26.55 sus random two_points
+-26.75 rws swap two_points
+-27.6 sus swap uniform
+-28.0 sus swap two_points
+-29.0 rank random two_points
+-29.45 rank random uniform
+-30.45 rank swap single_point
+-30.75 rank random single_point
+-31.05 rank swap uniform
+-31.05 rank swap scattered
+-31.55 rank random scattered
+-34.15 rank swap two_points
