@@ -93,9 +93,13 @@ class Fittness:
     def swarm(solutions):
         results = []
 
+        # for sol in solutions:
+        #     int_sol = [int(round(i, 0)) for i in sol]
+        #     results.append(-1 * Fittness.complicated(0, int_sol, 0))
+
         for sol in solutions:
-            int_sol = [int(round(i, 0)) for i in sol]
-            results.append(-1 * Fittness.complicated(0, int_sol, 0))
+            int_sol = [round(i) for i in sol]
+            results.append(-1 * Fittness.simple(0, int_sol, 0))
 
         return results
 

@@ -12,7 +12,6 @@ def solve_with_swarms(board):
     }
 
     chromoseme_length = sum(sum(cell == 0 for cell in row) for row in Fittness.board)
-    print(chromoseme_length)
 
     optimizer = ps.single.GlobalBestPSO(
         n_particles=500,

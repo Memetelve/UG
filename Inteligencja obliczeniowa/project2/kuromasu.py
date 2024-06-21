@@ -116,13 +116,23 @@ if len(sys.argv) > 1:
         print("python kuromasu.py -g")
         print("python kuromasu.py -g -i")
         print("python kuromasu.py -s")
+        print("python kuromasu.py -s -i")
         print("python kuromasu.py -find")
         print("python kuromasu.py -h")
 
     elif sys.argv[1] == "-s":
         # solve using swarms
-        cont, pos = solve_with_swarms(load_boards_from_file()[4])
 
-        pos = [int(round(i, 0)) for i in pos]
+        if len(sys.argv) > 2 and sys.argv[2] == "-i":
+            boards = load_boards_from_file()
+            chosen = prompt_user_for_board_index(boards)
+            board_from_file = boards[chosen]
+            Fittness.change_board(board_from_file)
+        else:
+            board_from_file = load_boards_from_file()[2]
+
+        cont, pos = solve_with_swarms(board_from_file)
+
+        pos = [round(i) for i in pos]
 
         print_board(pos, Fittness.board)
