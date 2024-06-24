@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "technologie-project"
+version = "0.1.0"
+description = ""
+authors = ["Memetelve <memetelve1@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.111.0"
+pyjwt = "^2.8.0"
+cryptography = "^42.0.8"
+fastapi-keycloak-middleware = "^1.0.1"
+pymongo = "^4.7.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
